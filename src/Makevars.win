@@ -1,0 +1,22 @@
+
+## Use the R_HOME indirection to support installations of multiple R version
+#PKG_LIBS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "Rcpp:::LdFlags()")
+
+###################################################
+
+MECAB = -lmecab
+MECAB64 = -lmecab64
+
+
+PKG_CXXFLAGS = -fpermissive
+
+
+ifeq "$(WIN)" "64"
+     PKG_LIBS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "Rcpp:::LdFlags()") -L../src-x64 $(MECAB64) # value for 64-bit Windows
+else
+     PKG_LIBS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "Rcpp:::LdFlags()") -L../src-i386 $(MECAB) # value for 32-bit Windows
+     endif
+
+PKG_CPPFLAGS = -I.
+
+

@@ -1,0 +1,11 @@
+Package: R2MeCab
+Type: Package
+Title: Interface for mecab
+Version: 0.00001
+Date: 2013-03-28
+Author: Motohiro ISHIDA
+Maintainer: Motohiro ISHIDA <ishida.motohiro@gmail.com>
+Description: Interface for mecab
+License: GPL
+Depends: Rcpp (>= 0.10.2)
+LinkingTo: Rcpp
