@@ -53,7 +53,7 @@ SEXP mecab_test (SEXP str){
   string input = Rcpp::as<string> (str);
 
   mecab_t * mecab;// MeCab::Tagger *tagger = MeCab::createTagger("");
-  mecab = mecab_new2("");
+  mecab = mecab_new2("-F '%m\t%f[0],%f[1],%f[2],%f[3],%f[4],%f[5],%f[10],%f[9],%f[11]'\n");
   if (!mecab) {return R_NilValue ;}else { // ; CHECK(mecab); // CHECK(tagger);
   // Gets Node object.
     const mecab_node_t * node = mecab_sparse_tonode(mecab, input.c_str());// // const MeCab::Node* node = tagger->parseToNode(input.c_str());
