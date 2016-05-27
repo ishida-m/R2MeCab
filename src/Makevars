@@ -1,5 +1,18 @@
 ## Use the R_HOME indirection to support installations of multiple R version
-PKG_LIBS = `$(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()"` -lmecab 
+
+# On Linux/Solaris we use pkg-config
+#ICU_CFLAGS=`pkg-config --cflags icu-i18n`
+# ICU_LIBS=`pkg-config --libs icu-i18n`
+
+
+
+#PKG_CPPFLAGS=`pkg-config --cflags icu-i18n`
+#PKG_LIBS = `$(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()"` -lmecab `pkg-config --libs icu-i18n`
+#// Sys.setenv("PKG_LIBS"='`icu-config --ldflags` -L/usr/lib/x86_64-linux-gnu/icu')
+#// Sys.setenv("PKG_CXXFLAGS"='`icu-config --cppflags` -I/usr/include/x86_64-linux-gnu/unicode')
+
+PKG_LIBS=`icu-config --ldflags` -L/usr/lib/x86_64-linux-gnu/icu -lmecab
+PKG_CXXFLAGS=`icu-config --cppflags` -I/usr/include/x86_64-linux-gnu/unicode
 
 ## As an alternative, one can also add this code in a file 'configure'
 ##

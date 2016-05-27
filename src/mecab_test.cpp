@@ -92,7 +92,11 @@ SEXP mecab_test (SEXP str){
          strL.push_back (buf1);
          strL2.push_back(feat[0]);
          buf1  = buf1 + "-" + feat[0];
-         setMap (m, buf1);
+         int x = setMap (m, buf1);
+	 if (x) {
+	   Rprintf("error");
+	   return R_NilValue;
+	 }
       }else {
          continue;
       }
